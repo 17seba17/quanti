@@ -11,13 +11,13 @@ document.addEventListener("DOMContentLoaded", function () {
         // Ottieni la query di ricerca dall'input
         const query = searchInput.value;
 
-        // Effettua una ricerca di file 'index.html' nel repository GitHub
+        // Effettua una ricerca ricorsiva di file 'index.html' nel repository GitHub
         const githubToken = 'YOUR_GITHUB_TOKEN';
         const repositoryOwner = 'YOUR_REPO_OWNER';
         const repositoryName = 'YOUR_REPO_NAME';
 
-        const apiUrl = `https://api.github.com/search/code?q=${query}+in:file+filename:index.html+repo:${repositoryOwner}/${repositoryName}`;
-        
+        const apiUrl = `https://api.github.com/search/code?q=${query}+filename:index.html+repo:${repositoryOwner}/${repositoryName}&per_page=100`; // Puoi regolare 'per_page' in base alle tue esigenze
+
         try {
             const response = await fetch(apiUrl, {
                 headers: {
