@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
 
                 if (data.length === 0) {
-                    searchResults.innerHTML += "Nessuna directory o file trovato nella repository.";
+                    searchResults.innerHTML += ("Nessuna directory in "+path);
                 }
 
                 else {
@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function() {
                             link.textContent = item.name;
                             li.appendChild(link);
                             ul.appendChild(li);
+
+                            find(path+"/"+item.name);
                         }
                     });
                     searchResults.appendChild(ul);
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         }///fine function
         
-        subdirectory="/2023";
+        subdirectory="";
         find(subdirectory);
 
 
