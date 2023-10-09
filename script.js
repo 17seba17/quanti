@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Ottieni l'elenco dei file nella repository utilizzando la GitHub API
         const repositoryName = "17seba17/quanti"; 
         function find(path){
-            fetch(`https://api.github.com/repos/${repositoryName}/${path}contents`)
+            fetch(`https://api.github.com/repos/${repositoryName}/contents${path}`)
             .then(response => response.json())
             .then(data => {
 
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         }///fine function
         
-        subdirectory="2023/";
+        subdirectory="/2023";
         find(subdirectory);
 
 
