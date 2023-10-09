@@ -22,9 +22,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 } else {
                     searchResults.innerHTML += "Elenco dei file nella repository:<br>";
                     const ul = document.createElement("ul");
+                    ul.classList.add("my-ul-class"); // Aggiungi una classe CSS all'elemento ul
                     data.forEach(item => {
                         if (item.type === "file") {
                             const li = document.createElement("li");
+                            li.classList.add("my-li-class"); // Aggiungi una classe CSS all'elemento li
                             const link = document.createElement("a");
                             link.href = item.html_url;
                             link.textContent = item.name;
