@@ -13,20 +13,20 @@ document.addEventListener("DOMContentLoaded", function() {
         searchResults.innerHTML = `Gli articoli del giorno sono: ${formattedDate}<br><br>`;
 
         // Ottieni l'elenco dei file nella repository utilizzando la GitHub API
+       
+        
         const repositoryName = "17seba17/quanti"; // Sostituisci con il tuo nome utente GitHub e il nome della repository
         fetch(`https://api.github.com/repos/${repositoryName}/contents`)
             .then(response => response.json())
             .then(data => {
                 if (data.length === 0) {
-                    searchResults.innerHTML += "Nessun file trovato nella repository.";
+                    searchResults.innerHTML += "Nessuna directory o file trovato nella repository.";
                 } else {
-                    searchResults.innerHTML += "Elenco dei file nella repository:<br>";
+                    searchResults.innerHTML += "Elenco delle directory nella repository:<br>";
                     const ul = document.createElement("ul");
-                    ul.classList.add("my-ul-class"); // Aggiungi una classe CSS all'elemento ul
                     data.forEach(item => {
-                        if (item.type === "file") {
+                        if (item.type === "dir") { // Verifica se l'elemento è una directory
                             const li = document.createElement("li");
-                            li.classList.add("my-li-class"); // Aggiungi una classe CSS all'elemento li
                             const link = document.createElement("a");
                             link.href = item.html_url;
                             link.textContent = item.name;
@@ -38,8 +38,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             })
             .catch(error => {
-                console.error("Errore nell'ottenere l'elenco dei file:", error);
-                searchResults.innerHTML += "Errore nell'ottenere l'elenco dei file.";
+                console.error("Errore nell'ottenere l'elenco delle directory:", error);
+                searchResults.innerHTML += "Errore nell'ottenere l'elenco delle directory.";
             });
+        
+
+
+
+
     });
 });
