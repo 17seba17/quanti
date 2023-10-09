@@ -19,7 +19,17 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => response.json())
             .then(data => {
 
-                if (data.length === 0) {
+
+                let count = 0;
+    data.forEach(item => {
+        if (item.type === "dir") {
+            count++;
+        }
+    });
+    return count;
+
+
+                if (count === 0) {
                     searchResults.innerHTML += ("Nessuna directory in "+path);
                 }
 
