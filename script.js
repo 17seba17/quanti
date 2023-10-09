@@ -13,72 +13,46 @@ document.addEventListener("DOMContentLoaded", function() {
         searchResults.innerHTML = `Gli articoli del giorno sono: ${formattedDate}<br><br>`;
 
         // Ottieni l'elenco dei file nella repository utilizzando la GitHub API
-       
-        
-     
+        const repositoryName = "17seba17/quanti"; 
+        function find(path){
+            fetch(`https://api.github.com/repos/${repositoryName}/${path}/contents`)
+            .then(response => response.json())
+            .then(data => {
 
-
-
-// Funzione per ottenere l'elenco di directory e file all'interno di una directory specifica
-function getContentsInDirectory(directoryUrl) {
-    return fetch(directoryUrl)
-        .then(response => response.json())
-        .then(data => {
-            const directories = [];
-            const files = [];
-
-            data.forEach(item => {
-                if (item.type === "dir") {
-                    // Se è una directory, aggiungila all'array delle directory
-                    directories.push(item);
-                } else if (item.type === "file") {
-                    // Se è un file, aggiungilo all'array dei file
-                    files.push(item);
+                if (data.length === 0) {
+                    searchResults.innerHTML += "Nessuna directory o file trovato nella repository.";
                 }
+
+                else {
+                    searchResults.innerHTML += "Elenco delle directory nella repository:<br>";
+                    const ul = document.createElement("ul");
+                    data.forEach(item => {
+                        if (item.type === "dir") { // Verifica se l'elemento è una directory
+                            const li = document.createElement("li");
+                            const link = document.createElement("a");
+                            link.href = item.html_url;
+                            link.textContent = item.name;
+                            li.appendChild(link);
+                            ul.appendChild(li);
+                        }
+                    });
+                    searchResults.appendChild(ul);
+                }
+
+
+
+
+
+            })
+            .catch(error => {
+                console.error("Errore nell'ottenere l'elenco delle directory:", error);
+                searchResults.innerHTML += "Errore nell'ottenere l'elenco delle directory.";
             });
 
-            // Esegui la ricerca all'interno dei file della directory corrente (se necessario)
-
-            // Richiama la funzione ricorsivamente per le sottodirectory
-            const subDirectoryPromises = directories.map(dir => getContentsInDirectory(dir.url));
-
-            return Promise.all(subDirectoryPromises)
-                .then(subDirectoryContents => {
-                    // Combina i contenuti delle sottodirectory con quelli della directory corrente
-                    const allContents = [].concat(...subDirectoryContents, files);
-                    return allContents;
-                });
-        });
-}
-
-const repositoryName = "17seba17/quanti"; // Sostituisci con il tuo nome utente GitHub e il nome della repository
-const repositoryUrl = `https://api.github.com/repos/${repositoryName}/contents`;
-
-getContentsInDirectory(repositoryUrl)
-    .then(contents => {
-        if (contents.length === 0) {
-            searchResults.innerHTML += "Nessuna directory o file trovato nella repository.";
-        } else {
-            searchResults.innerHTML += "Elenco di directory e file nella repository:<br>";
-            const ul = document.createElement("ul");
-            contents.forEach(item => {
-                const li = document.createElement("li");
-                const link = document.createElement("a");
-                link.href = item.html_url;
-                link.textContent = item.name;
-                li.appendChild(link);
-                ul.appendChild(li);
-            });
-            searchResults.appendChild(ul);
-        }
-    })
-    .catch(error => {
-        console.error("Errore nell'ottenere l'elenco delle directory e dei file:", error);
-        searchResults.innerHTML += "Errore nell'ottenere l'elenco delle directory e dei file.";
-    });
-
-
-
+        }///fine function
+        
+        subdirectory="";
+        find(subdirectory);
 
 
 
