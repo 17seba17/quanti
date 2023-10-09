@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
             count++;
         }
     });
-    return count;
+    
 
 
                 if (count === 0) {
