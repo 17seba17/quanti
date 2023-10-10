@@ -20,7 +20,7 @@ function loadLanguageFile() {
         .then(response => response.json())
         .then(data => {
             // Imposta il testo degli elementi HTML utilizzando i dati caricati
-            document.getElementById('header-title').textContent ="Update";
+            document.getElementById('header-title').textContent =data.headerTitle;
             document.getElementById('header-subtitle').textContent = data.headerSubtitle;
             document.getElementById('search-input').placeholder = data.searchPlaceholder;
             document.getElementById('search-form').querySelector('button').textContent = data.searchButton;
