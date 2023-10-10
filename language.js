@@ -4,6 +4,15 @@
 let currentLanguage = 'italian';
 
 // Funzione per caricare le stringhe di testo dalla lingua selezionata
+
+function changeLanguage() {
+    // Cambia la lingua corrente
+    currentLanguage = currentLanguage === 'italian' ? 'english' : 'italian';
+
+    // Carica le stringhe di testo nella nuova lingua
+    loadLanguageFile();
+}
+
 function loadLanguageFile() {
     const languageFile = currentLanguage === 'italian' ? 'ita.json' : 'en.json';
 
