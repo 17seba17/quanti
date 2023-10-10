@@ -1,6 +1,9 @@
+
+{
 "headerTitle": "Unknown Data",
     "headerSubtitle": "Find the Unfindable on the Internet",
     "searchPlaceholder": "Enter your search...",
     "searchButton": "Search",
     "resultsTitle": "Results",
     "footerText": "&copy; 2023 Rare Data - Find the Unfindable"
+}
