@@ -1,14 +1,12 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Dati Sconosciuti</h1>
-        <p>Trova ciò che è Introvabile su Internet</p>
+        <h1 id="header-title">Dati Sconosciuti</h1>
+        <p id="header-subtitle">Trova ciò che è Introvabile su Internet</p>
     </header>
     <main>
         <section class="search-section">
@@ -22,16 +20,16 @@
             <h2>Risultati</h2>
             <ul id="search-results">
                 <!-- I risultati verranno visualizzati qui tramite JavaScript -->
-                 
             </ul>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2023 Dati Rari - Trova l'Introvabile</p>
-     </footer>
     <script src="script.js"></script>
-
-
+    <footer>
+        <p id="footer-text">&copy; 2023 Dati Rari - Trova l'Introvabile</p>
+    </footer>
+    <!-- Includi il tuo script per gestire il cambio di lingua -->
+    <script src="language.js"></script>
+    <!-- Aggiungi un pulsante per cambiare la lingua -->
+    <button id="language-button" onclick="changeLanguage()">Cambia Lingua</button>
 </body>
 </html>
-
