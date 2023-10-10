@@ -5,7 +5,7 @@ let currentLanguage = 'italian';
 
 // Funzione per caricare le stringhe di testo dalla lingua selezionata
 function loadLanguageFile() {
-    const languageFile = currentLanguage === 'italian' ? 'ita.txt' : 'en.txt';
+    const languageFile = currentLanguage === 'italian' ? 'ita.json' : 'en.json';
 
     fetch(languageFile)
         .then(response => response.json())
