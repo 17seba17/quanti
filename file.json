@@ -1,0 +1,26 @@
+{
+    "headerTitle": {
+        "italian": "Dati Sconosciuti ultima versione",
+        "english": "Unknown Data last version"
+    },
+    "headerSubtitle": {
+        "italian": "Trova ciò che è Introvabile su Internet",
+        "english": "Find the Unfindable on the Internet"
+    },
+    "searchPlaceholder": {
+        "italian": "Inserisci la tua ricerca...",
+        "english": "Enter your search..."
+    },
+    "searchButton": {
+        "italian": "Cerca",
+        "english": "Search"
+    },
+    "resultsTitle": {
+        "italian": "Risultati",
+        "english": "Results"
+    },
+    "footerText": {
+        "italian": "&copy; 2023 Dati Rari - Trova l'Introvabile",
+        "english": "&copy; 2023 Rare Data - Find the Unfindable"
+    }
+}
