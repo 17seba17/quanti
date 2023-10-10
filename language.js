@@ -21,6 +21,3 @@ function loadLanguageFile() {
             console.error('Errore nel caricamento del file di lingua:', error);
         });
 }
-
-// Chiamare questa funzione all'avvio per impostare la lingua iniziale
-loadLanguageFile();

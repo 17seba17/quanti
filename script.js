@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Ottieni l'elenco dei file nella repository utilizzando la GitHub API
         const repositoryName = "17seba17/quanti"; 
-        function find(path){
+        function findDir(path){
             fetch(`https://api.github.com/repos/${repositoryName}/contents${path}`)
             .then(response => response.json())
             .then(data => {
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             li.appendChild(link);
                             ul.appendChild(li);
 
-                            find(path+"/"+item.name);
+                            findDir(path+"/"+item.name);
                         }
                     });
                     searchResults.appendChild(ul);
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }///fine function
         
         subdirectory="";
-        find(subdirectory);
+        findDir(subdirectory);
 
 
 
