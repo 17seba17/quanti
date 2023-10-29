@@ -13,7 +13,7 @@ function changeLanguage() {
 }
 
 function loadLanguageFile() {
-    fetch('file.json') // Sostituisci 'file.json' con il percorso del tuo nuovo file JSON
+    fetch('../file.json') // Sostituisci 'file.json' con il percorso del tuo nuovo file JSON
         .then(response => response.json())
         .then(data => {
             // Imposta il testo degli elementi HTML utilizzando i dati caricati
