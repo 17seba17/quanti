@@ -13,20 +13,23 @@ function changeLanguage() {
 }
 
 function loadLanguageFile() {
-    fetch('file.json') // Sostituisci 'file.json' con il percorso del tuo nuovo file JSON
+    fetch('file.json')
         .then(response => response.json())
         .then(data => {
-            // Imposta il testo degli elementi HTML utilizzando i dati caricati
-            document.getElementById('header-title').textContent = data.headerTitle[currentLanguage];
-            document.getElementById('header-subtitle').textContent = data.headerSubtitle[currentLanguage];
-            document.getElementById('search-input').placeholder = data.searchPlaceholder[currentLanguage];
-            document.getElementById('search-form').querySelector('button').textContent = data.searchButton[currentLanguage];
-            document.getElementById('footer-text').innerHTML = data.footerText[currentLanguage];
+            const elementsToTranslate = document.querySelectorAll('[data-translate]');
+
+            elementsToTranslate.forEach(element => {
+                const translationKey = element.getAttribute('data-translate');
+                if (data[translationKey] && data[translationKey][currentLanguage]) {
+                    element.textContent = data[translationKey][currentLanguage];
+                }
+            });
         })
         .catch(error => {
             console.error('Errore nel caricamento del file di lingua:', error);
         });
 }
+
 
 // Chiamare questa funzione all'avvio per impostare la lingua iniziale
 loadLanguageFile();
