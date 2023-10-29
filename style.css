@@ -84,3 +84,10 @@ footer {
     color: #fff;
     padding: 0.5rem 0;
 }
+
+#language-button {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000; /* Assicura che il pulsante sia visibile sopra il resto del contenuto */
+}
